@@ -1,0 +1,58 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="container">
+        
+        {% if not catgs %}
+          {% if not categories %}
+          <h2 class="hc">Category</h2>
+          <ul class="list-group-flush p-0">
+            <li style="font-weight: bold; color:brown; text-align:center;" class="list-group-item">{{ cat }}</li>
+          </ul>
+           <h2 class="hc">Vide</h2>
+          {% endif %}
+        {% endif %}
+
+        {% if catgs %}
+        <h2 class="hc">Categories</h2>
+        {% endif %}
+
+        {% for category in catgs %}
+           <ul class="list-group-flush p-0">
+               <li class="list-group-item"><a class="myhead" style="font-size: 20px;" href="{% url 'get_category' category=category.id %}">{{ category.name }}</a></li>
+           </ul>
+        {% endfor %}
+        {% if catgs %}
+           {% if user.is_authenticated %}
+            <form action="{% url 'crca' %}" method="POST">
+              {% csrf_token %}
+             <ul class="list-group-flush p-0">
+              <li style="font-weight: bold; color:brown; text-align:center;" class="list-group-item">{{ crca }}</li>
+             </ul>
+            </form>
+           {% endif %}
+        {% endif %}
+        {% if categories %}
+        <h2 class="hc">Category</h2>
+        <ul class="list-group-flush p-0">
+            <li style="font-weight: bold; color:brown; text-align:center;" class="list-group-item">{{ cat }}</li>
+        </ul> 
+        {% endif %}
+        <div class="row">
+        {% for list in categories %}
+            <div class="col-lg-3 col-md-4 col-sm-6 ">
+                <div class="list">
+                  <h4 class="name"><a href="{% url 'details' id=list.id %}">{{ list.name }}</a></h4>
+                 {% if list.image %}
+                  <img src="{{ list.image.url }}" alt="">
+                 {% endif %}
+                 <h6 class="">{{ list.startbid }}$</h6>
+                 <span class="">{{ list.description|slice:":50" }} <strong><a href="{% url 'details' id=list.id %}">more</a></strong> </span>
+                 
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        
+    </div>
+{% endblock %}

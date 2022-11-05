@@ -1,0 +1,186 @@
+body {
+    
+    background: #f4f4f4;
+}
+a{
+    text-decoration: none;
+}
+.navi{
+    background-color: #fff;
+}
+.logo{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    color: brown;
+    width: 50%;
+}
+.logo span{
+    color: #117a8b;
+}
+.signed{
+    display: flex;
+}
+.signed span{
+    margin: auto 0px auto auto;
+}
+.un{
+    padding: 6px;
+    color:cornsilk;
+    background-color:brown;
+    margin-right: 2px;
+}
+.nav{
+    background-color: brown;
+    color:cornsilk
+    
+}
+.nav li a{
+    color:cornsilk
+}
+.nav li a:hover{
+    color: brown;
+    background-color:cornsilk
+}
+.nav li a:focus{
+    color: brown;
+    background-color:cornsilk
+}
+
+.listing{
+    margin: 20px auto;
+    padding: 5px 34px;
+    padding-bottom: 10px;
+    max-width: 500px;
+    background-color: brown;
+    color:cornsilk
+
+}
+.listing .ls{
+    width: 100%;
+}
+.listing .ls select,input,textarea{
+    width: 100%;
+}
+.listing .ls select,input{
+    height: 35px;
+}
+.listing textarea{
+    max-height: 150px;
+}
+.listing .in{
+    background-color: #fff;
+    color: brown;
+    font-weight: bold;
+}
+.list{
+    background-color:#fff ;
+    height: 360px;
+    padding: 15px;
+    overflow: hidden;
+    margin-bottom: 15px;
+
+}
+.list img{
+    width: 100%;
+    height: 180px;
+}
+.hc{
+    color: brown;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: monospace;
+}
+.name{
+    color: brown;
+    font-style: italic;
+    font-family: monospace;
+}
+.name a{
+    color: brown;
+    font-style: italic;
+    font-family: monospace;
+    text-decoration: none;
+}
+.datetime{
+    color: brown;
+}
+.bid{
+    margin: 6px;
+}
+ input,textarea{
+    border: 3px solid brown;
+  
+ }
+ 
+.bid-input{
+    border: 1px solid brown;
+    background-color: brown;
+    color: cornsilk;
+    font-weight: bold;
+}
+
+.ta{
+    text-align: center;
+}
+.ta textarea{
+    max-width: 300px;
+    max-width: 300px;
+    background-color: #fff;
+    border-radius: 19px;
+    color: #6c757d;
+    padding: 8px;
+    height: 140px;
+}
+.ta input{   
+    max-width: 200px;
+}
+.ta .comnt-div{
+    background-color: #fff;
+    border-radius: 19px;
+    color: #6c757d;
+    padding: 8px;
+    max-width: 300px;
+    text-align: center;
+    margin: 2px auto;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+.myhead{
+    color: brown;
+    font-family: ui-rounded;
+}
+.brrd{
+    border-radius: 18px;
+}
+.ta .comnt-div .pis{
+    border-radius: 50%;
+    background-color: #f6f6f6;
+}
+.watch{
+    display: block;
+    margin: 3px auto;
+    font-size: 13px;
+    padding: 2px 8px;
+}
+
+h2{
+    color: brown;
+}
+.form-group .form-control{
+    border: 1px solid brown;
+}
+.form-group .form-control:focus{
+    border: 1px solid brown;
+}
+form .btn-primary{
+    background-color: brown;
+    border: 1px solid brown;
+    color:cornsilk;
+}
+form .btn-primary:hover{
+    background-color: brown;
+    border: 1px solid brown;
+}
+.container a:last-child{
+    color: brown;
+}

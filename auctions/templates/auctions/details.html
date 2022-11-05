@@ -1,0 +1,85 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="container">
+           <div class="row">
+     
+              <div style="text-align: center; " class="col-lg-12 col-md-12 col-sm-12">
+                  <h4>Category <strong class="myhead">{{ listing.category }}</strong></h4>
+                  <h4>Name <strong class="myhead">{{ listing.name }}</strong></h4>   
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 list " style=" height:auto; text-align: center;">
+                {% if listing.image %}
+                    <img style="max-width: 231px; height: 231px;" src="{{ listing.image.url }}" alt="">
+                {% endif %}
+              </div>
+
+              <div style="height:auto;" class="col-lg-6 col-md-6 col-sm-6 list">
+                <p>{{ listing.description }}</p>
+                <h6>Current Price: <strong>{{ listing.startbid }}$</strong> </h6>
+                <span><strong>Posted By <span style="color: brown;">{{ listing.user }}</span></strong>  {{ listing.created }}</span>
+                {%if user.is_authenticated and user == listing.user %}
+                   <br>
+                   <br>
+                   <button  class="btn btn-danger"><a href="{% url 'close' id=listing.id %}" style="color: cornsilk;">Close Listing <i class="fa fa-times"></i></a></button>
+                {% endif %}
+
+                {%if user.is_authenticated and user != listing.user %}
+                <br>
+                   <br>
+                 <form action="{% url 'process_bid' id=listing.id %}" method="POST">
+                   {% csrf_token %}
+                   <div class="bid">
+                    {{bid.amount}}
+                    <input type="submit" class="bid-input" value="Place Bid">
+                   </div>    
+                 </form>
+                 <a href="{% url 'watch' id=listing.id %}"><button class="btn btn-secondary brrd">Add To Watchlist</button> </a> 
+                {% endif %}
+
+                {%if not user.is_authenticated %}
+                <br>
+                <span>you are not registered , please</span>
+                <button class="btn btn-primary"><a href="{% url 'login' %}"></a>Sign up</button>
+                {% endif %}
+              </div>
+          </div> 
+    </div>     
+              
+              <center>
+                <div class="ta">
+                  {%if user.is_authenticated and user != listing.user %}
+                   <form action="{% url 'process_comment' id=listing.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="bid">
+                      {{comment_form.text}}
+                      <br>
+                      <input type="submit" class="bid-input" value="Leave Comment">
+                    </div>
+                  </form>
+                  
+                   {% for comment in comments %}
+                   <div class="comnt-div ta">
+                      <p class="pis"><strong>{{ comment.user }}</strong></p>
+                      <p>{{ comment.text }}</p>
+                    </div>
+                   {% endfor %}
+                  {% endif %}
+
+                  {%if user.is_authenticated and user == listing.user %}    
+                    {% if comments %}
+                     <h4 class="myhead">Comments</h4>
+                     {% for comment in comments %}
+                      <div class="comnt-div ta">
+                        <p class="pis"><strong>{{ comment.user }}</strong></p>
+                        <p>{{ comment.text }}</p>
+                      </div>
+                     {% endfor %}
+                    {% else %}
+                     <h5 class="myhead">No Comments</h5>
+                    {% endif %}
+                  {% endif %}
+                </div>
+              </center>
+    
+{% endblock %}

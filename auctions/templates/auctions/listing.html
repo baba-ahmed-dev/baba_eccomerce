@@ -1,0 +1,16 @@
+{% extends "auctions/layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+    <div class="listing">
+      <form enctype="multipart/form-data" action="" method="POST">
+          {% csrf_token %}
+         <div class="ls">{{ new_listing.category|as_crispy_field}}</div>
+         <div class="ls">{{ new_listing.name|as_crispy_field}}</div>
+         <div class="ls">{{ new_listing.description|as_crispy_field}}</div>
+         <div class="ls">{{ new_listing.startbid|as_crispy_field}}</div>
+         {{ new_listing.image|as_crispy_field}}
+         <input type="submit" class="in" value="Save">
+      </form>
+    </div>
+{% endblock %}

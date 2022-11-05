@@ -1,0 +1,31 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="container">
+        <h2 class="hc">Active</h2>
+        <ul class="list-group-flush p-0">
+            <li style="font-weight: bold; color:brown; text-align:center;" class="list-group-item">Listings</li>
+        </ul>
+        {% if message %}
+        <ul class="list-group-flush p-0">
+            <li style="font-weight: bold; color:#fff; text-align:center;background-color:cyan;" class="list-group-item">{{ message }}</li>
+        </ul>
+        {% endif %}
+           <div class="row">
+            {% for list in listing %}
+            <div class="col-lg-3 col-md-4 col-sm-6 ">
+                <div class="list">
+                  <h4 class="name"><a href="{% url 'details' id=list.id %}">{{ list.name }}</a></h4>
+                 {% if list.image %}
+                  <img src="{{ list.image.url }}" alt="">
+                 {% endif %}
+                 <h6 class="">{{ list.startbid }}$</h6>
+                 <span class="">{{ list.description|slice:":48" }} <strong><a href="{% url 'details' id=list.id %}">more</a></strong> </span>
+                 
+                </div>
+            </div>
+            {% endfor %}
+           </div>
+        
+    </div>
+{% endblock %}

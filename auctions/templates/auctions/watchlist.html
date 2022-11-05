@@ -1,0 +1,27 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="container">
+        
+        <ul class="list-group-flush p-0">
+            <li style="font-weight: bold; color:brown; text-align:center;" class="list-group-item">My Watchlist</li>
+          </ul>
+          
+           <div class="row">
+            {% for list in watchlist %}
+            <div class="col-lg-3 col-md-4 col-sm-6 ">
+                <div class="list">
+                  <h4 class="name"><a href="{% url 'details' id=list.id %}">{{ list.name }}</a></h4>
+                 {% if list.image %}
+                  <img src="{{ list.image.url }}" alt="">
+                 {% endif %}
+                 <h6 class="">{{ list.startbid }}$</h6>
+                 <span class="">{{ list.description|slice:":50" }} <strong><a href="{% url 'details' id=list.id %}">more</a></strong> </span>
+                 <button style="display:block;margin:3px auto; margin-bottom: 0px;" class="btn btn-danger watch"><a style="color: cornsilk;" href="{% url 'watch' id=list.id %}">Remove <i class="fa fa-trash"></i> </a></button>
+                </div>
+            </div>
+            {% endfor %}
+           </div>
+        
+    </div>
+{% endblock %}
